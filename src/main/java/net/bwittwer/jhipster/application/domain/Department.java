@@ -30,6 +30,9 @@ public class Department implements Serializable {
     @Column(name = "department_name", nullable = false)
     private String departmentName;
 
+    @Column(name = "toto")
+    private String toto;
+
     @OneToMany(mappedBy = "department")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -55,6 +58,19 @@ public class Department implements Serializable {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public String getToto() {
+        return toto;
+    }
+
+    public Department toto(String toto) {
+        this.toto = toto;
+        return this;
+    }
+
+    public void setToto(String toto) {
+        this.toto = toto;
     }
 
     public Set<Location> getLocations() {
@@ -108,6 +124,7 @@ public class Department implements Serializable {
         return "Department{" +
             "id=" + getId() +
             ", departmentName='" + getDepartmentName() + "'" +
+            ", toto='" + getToto() + "'" +
             "}";
     }
 }

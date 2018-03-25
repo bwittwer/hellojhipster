@@ -17,6 +17,8 @@ public class DepartmentDTO implements Serializable {
     @NotNull
     private String departmentName;
 
+    private String toto;
+
     public Long getId() {
         return id;
     }
@@ -31,6 +33,14 @@ public class DepartmentDTO implements Serializable {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public String getToto() {
+        return toto;
+    }
+
+    public void setToto(String toto) {
+        this.toto = toto;
     }
 
     @Override
@@ -59,6 +69,7 @@ public class DepartmentDTO implements Serializable {
         return "DepartmentDTO{" +
             "id=" + getId() +
             ", departmentName='" + getDepartmentName() + "'" +
+            ", toto='" + getToto() + "'" +
             "}";
     }
 }

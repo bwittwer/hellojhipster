@@ -10,6 +10,12 @@
             "otherEntityRelationshipName": "location"
         },
         {
+            "relationshipType": "one-to-many",
+            "relationshipName": "cat",
+            "otherEntityName": "cat",
+            "otherEntityRelationshipName": "cat"
+        },
+        {
             "relationshipName": "department",
             "otherEntityName": "department",
             "relationshipType": "many-to-one",

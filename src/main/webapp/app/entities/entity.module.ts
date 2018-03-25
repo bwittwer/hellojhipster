@@ -4,6 +4,7 @@ import { HellojhipsterRegionMySuffixModule } from './region-my-suffix/region-my-
 import { HellojhipsterCountryMySuffixModule } from './country-my-suffix/country-my-suffix.module';
 import { HellojhipsterLocationMySuffixModule } from './location-my-suffix/location-my-suffix.module';
 import { HellojhipsterDepartmentMySuffixModule } from './department-my-suffix/department-my-suffix.module';
+import { HellojhipsterCatMySuffixModule } from './cat-my-suffix/cat-my-suffix.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -12,6 +13,7 @@ import { HellojhipsterDepartmentMySuffixModule } from './department-my-suffix/de
         HellojhipsterCountryMySuffixModule,
         HellojhipsterLocationMySuffixModule,
         HellojhipsterDepartmentMySuffixModule,
+        HellojhipsterCatMySuffixModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

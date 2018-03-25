@@ -15,6 +15,10 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "toto",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180319224211",
