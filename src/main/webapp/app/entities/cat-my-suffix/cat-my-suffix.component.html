@@ -1,10 +1,10 @@
 <div>
     <h2>
-        <span>Departments</span>
-        <button class="btn btn-primary float-right jh-create-entity create-department-my-suffix" [routerLink]="['/', { outlets: { popup: ['department-my-suffix-new'] } }]">
+        <span>Cats</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cat-my-suffix" [routerLink]="['/', { outlets: { popup: ['cat-my-suffix-new'] } }]">
             <span class="fa fa-plus"></span>
             <span >
-            Create new Department
+            Create new Cat
             </span>
         </button>
     </h2>
@@ -12,31 +12,37 @@
     <div class="row">
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="departments">
+    <div class="table-responsive" *ngIf="cats">
         <table class="table table-striped">
             <thead>
             <tr>
             <th><span>ID</span></th>
-            <th><span>Department Name</span></th>
-            <th><span>Toto</span></th>
+            <th><span>Name</span></th>
+            <th><span>Age</span></th>
+            <th><span>Cat</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let department of departments ;trackBy: trackId">
-                <td><a [routerLink]="['../department-my-suffix', department.id ]">{{department.id}}</a></td>
-                <td>{{department.departmentName}}</td>
-                <td>{{department.toto}}</td>
+            <tr *ngFor="let cat of cats ;trackBy: trackId">
+                <td><a [routerLink]="['../cat-my-suffix', cat.id ]">{{cat.id}}</a></td>
+                <td>{{cat.name}}</td>
+                <td>{{cat.age}}</td>
+                <td>
+                    <div *ngIf="cat.catId">
+                        <a [routerLink]="['../location-my-suffix', cat.catId  ]" >{{cat.catId}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../department-my-suffix', department.id ]"
+                                [routerLink]="['../cat-my-suffix', cat.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'department-my-suffix/'+ department.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'cat-my-suffix/'+ cat.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
@@ -44,7 +50,7 @@
                             <span class="d-none d-md-inline">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'department-my-suffix/'+ department.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'cat-my-suffix/'+ cat.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 
 /**
- * Performance test for the Department entity.
+ * Performance test for the Cat entity.
  */
-class DepartmentGatlingTest extends Simulation {
+class CatGatlingTest extends Simulation {
 
     val context: LoggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
     // Log all HTTP requests
@@ -42,7 +42,7 @@ class DepartmentGatlingTest extends Simulation {
         "Authorization" -> "${access_token}"
     )
 
-    val scn = scenario("Test the Department entity")
+    val scn = scenario("Test the Cat entity")
         .exec(http("First unauthenticated request")
         .get("/api/account")
         .headers(headers_http)
@@ -60,26 +60,26 @@ class DepartmentGatlingTest extends Simulation {
         .check(status.is(200)))
         .pause(10)
         .repeat(2) {
-            exec(http("Get all departments")
-            .get("/api/departments")
+            exec(http("Get all cats")
+            .get("/api/cats")
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new department")
-            .post("/api/departments")
+            .exec(http("Create new cat")
+            .post("/api/cats")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "departmentName":"SAMPLE_TEXT", "toto":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "age":"0"}""")).asJSON
             .check(status.is(201))
-            .check(headerRegex("Location", "(.*)").saveAs("new_department_url"))).exitHereIfFailed
+            .check(headerRegex("Location", "(.*)").saveAs("new_cat_url"))).exitHereIfFailed
             .pause(10)
             .repeat(5) {
-                exec(http("Get created department")
-                .get("${new_department_url}")
+                exec(http("Get created cat")
+                .get("${new_cat_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created department")
-            .delete("${new_department_url}")
+            .exec(http("Delete created cat")
+            .delete("${new_cat_url}")
             .headers(headers_http_authenticated))
             .pause(10)
         }

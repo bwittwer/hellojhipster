@@ -16,6 +16,7 @@ public interface LocationMapper extends EntityMapper<LocationDTO, Location> {
     LocationDTO toDto(Location location);
 
     @Mapping(source = "countryId", target = "country")
+    @Mapping(target = "cats", ignore = true)
     @Mapping(source = "departmentId", target = "department")
     Location toEntity(LocationDTO locationDTO);
 

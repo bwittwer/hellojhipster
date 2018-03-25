@@ -50,6 +50,8 @@ public class CacheConfiguration {
             cm.createCache(net.bwittwer.jhipster.application.domain.Location.class.getName(), jcacheConfiguration);
             cm.createCache(net.bwittwer.jhipster.application.domain.Department.class.getName(), jcacheConfiguration);
             cm.createCache(net.bwittwer.jhipster.application.domain.Department.class.getName() + ".locations", jcacheConfiguration);
+            cm.createCache(net.bwittwer.jhipster.application.domain.Location.class.getName() + ".cats", jcacheConfiguration);
+            cm.createCache(net.bwittwer.jhipster.application.domain.Cat.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

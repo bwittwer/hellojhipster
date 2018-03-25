@@ -44,6 +44,9 @@ public class DepartmentResourceIntTest {
     private static final String DEFAULT_DEPARTMENT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_DEPARTMENT_NAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_TOTO = "AAAAAAAAAA";
+    private static final String UPDATED_TOTO = "BBBBBBBBBB";
+
     @Autowired
     private DepartmentRepository departmentRepository;
 
@@ -88,7 +91,8 @@ public class DepartmentResourceIntTest {
      */
     public static Department createEntity(EntityManager em) {
         Department department = new Department()
-            .departmentName(DEFAULT_DEPARTMENT_NAME);
+            .departmentName(DEFAULT_DEPARTMENT_NAME)
+            .toto(DEFAULT_TOTO);
         return department;
     }
 
@@ -114,6 +118,7 @@ public class DepartmentResourceIntTest {
         assertThat(departmentList).hasSize(databaseSizeBeforeCreate + 1);
         Department testDepartment = departmentList.get(departmentList.size() - 1);
         assertThat(testDepartment.getDepartmentName()).isEqualTo(DEFAULT_DEPARTMENT_NAME);
+        assertThat(testDepartment.getToto()).isEqualTo(DEFAULT_TOTO);
     }
 
     @Test
@@ -166,7 +171,8 @@ public class DepartmentResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(department.getId().intValue())))
-            .andExpect(jsonPath("$.[*].departmentName").value(hasItem(DEFAULT_DEPARTMENT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].departmentName").value(hasItem(DEFAULT_DEPARTMENT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].toto").value(hasItem(DEFAULT_TOTO.toString())));
     }
 
     @Test
@@ -180,7 +186,8 @@ public class DepartmentResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(department.getId().intValue()))
-            .andExpect(jsonPath("$.departmentName").value(DEFAULT_DEPARTMENT_NAME.toString()));
+            .andExpect(jsonPath("$.departmentName").value(DEFAULT_DEPARTMENT_NAME.toString()))
+            .andExpect(jsonPath("$.toto").value(DEFAULT_TOTO.toString()));
     }
 
     @Test
@@ -203,7 +210,8 @@ public class DepartmentResourceIntTest {
         // Disconnect from session so that the updates on updatedDepartment are not directly saved in db
         em.detach(updatedDepartment);
         updatedDepartment
-            .departmentName(UPDATED_DEPARTMENT_NAME);
+            .departmentName(UPDATED_DEPARTMENT_NAME)
+            .toto(UPDATED_TOTO);
         DepartmentDTO departmentDTO = departmentMapper.toDto(updatedDepartment);
 
         restDepartmentMockMvc.perform(put("/api/departments")
@@ -216,6 +224,7 @@ public class DepartmentResourceIntTest {
         assertThat(departmentList).hasSize(databaseSizeBeforeUpdate);
         Department testDepartment = departmentList.get(departmentList.size() - 1);
         assertThat(testDepartment.getDepartmentName()).isEqualTo(UPDATED_DEPARTMENT_NAME);
+        assertThat(testDepartment.getToto()).isEqualTo(UPDATED_TOTO);
     }
 
     @Test

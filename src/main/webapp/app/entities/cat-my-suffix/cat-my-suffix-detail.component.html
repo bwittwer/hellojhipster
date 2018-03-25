@@ -1,16 +1,22 @@
 
-<div *ngIf="department">
-    <h2><span>Department</span> {{department.id}}</h2>
+<div *ngIf="cat">
+    <h2><span>Cat</span> {{cat.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span>Department Name</span></dt>
+        <dt><span>Name</span></dt>
         <dd>
-            <span>{{department.departmentName}}</span>
+            <span>{{cat.name}}</span>
         </dd>
-        <dt><span>Toto</span></dt>
+        <dt><span>Age</span></dt>
         <dd>
-            <span>{{department.toto}}</span>
+            <span>{{cat.age}}</span>
+        </dd>
+        <dt><span>Cat</span></dt>
+        <dd>
+            <div *ngIf="cat.catId">
+                <a [routerLink]="['/location-my-suffix', cat.catId]">{{cat.catId}}</a>
+            </div>
         </dd>
     </dl>
 
@@ -21,7 +27,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'department-my-suffix/'+ department.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'cat-my-suffix/'+ cat.id + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">

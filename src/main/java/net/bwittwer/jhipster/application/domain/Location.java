@@ -1,5 +1,6 @@
 package net.bwittwer.jhipster.application.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -7,6 +8,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -39,6 +42,11 @@ public class Location implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private Country country;
+
+    @OneToMany(mappedBy = "cat")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Cat> cats = new HashSet<>();
 
     @ManyToOne
     private Department department;
@@ -115,6 +123,31 @@ public class Location implements Serializable {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public Set<Cat> getCats() {
+        return cats;
+    }
+
+    public Location cats(Set<Cat> cats) {
+        this.cats = cats;
+        return this;
+    }
+
+    public Location addCat(Cat cat) {
+        this.cats.add(cat);
+        cat.setCat(this);
+        return this;
+    }
+
+    public Location removeCat(Cat cat) {
+        this.cats.remove(cat);
+        cat.setCat(null);
+        return this;
+    }
+
+    public void setCats(Set<Cat> cats) {
+        this.cats = cats;
     }
 
     public Department getDepartment() {
