@@ -14,11 +14,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="country"/>
 
-        <addForeignKeyConstraint baseColumnNames="department_id"
-                                 baseTableName="location"
-                                 constraintName="fk_location_department_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="department"/>
-
     </changeSet>
 </databaseChangeLog>

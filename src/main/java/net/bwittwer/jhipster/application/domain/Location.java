@@ -48,9 +48,6 @@ public class Location implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Cat> cats = new HashSet<>();
 
-    @ManyToOne
-    private Department department;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -148,19 +145,6 @@ public class Location implements Serializable {
 
     public void setCats(Set<Cat> cats) {
         this.cats = cats;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public Location department(Department department) {
-        this.department = department;
-        return this;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
