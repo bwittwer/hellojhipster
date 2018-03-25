@@ -7,6 +7,15 @@ entity Country {
     test String
 }
 
+entity Cat {
+	name String
+    age Integer
+}
+
+relationship OneToMany {
+	 Location to Cat{cat}
+}
+
 // an ignored comment
 /** not an ignored comment */
 entity Location {
@@ -18,6 +27,7 @@ entity Location {
 
 entity Department {
 	departmentName String required
+    toto String
 }
 
 relationship OneToOne {
