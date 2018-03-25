@@ -14,12 +14,6 @@
             "relationshipName": "cat",
             "otherEntityName": "cat",
             "otherEntityRelationshipName": "cat"
-        },
-        {
-            "relationshipName": "department",
-            "otherEntityName": "department",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -46,6 +40,5 @@
     "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "angularJSSuffix": "mySuffix"
+    "jpaMetamodelFiltering": false
 }

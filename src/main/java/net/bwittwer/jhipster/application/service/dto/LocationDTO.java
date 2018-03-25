@@ -23,8 +23,6 @@ public class LocationDTO implements Serializable {
 
     private Long countryId;
 
-    private Long departmentId;
-
     public Long getId() {
         return id;
     }
@@ -71,14 +69,6 @@ public class LocationDTO implements Serializable {
 
     public void setCountryId(Long countryId) {
         this.countryId = countryId;
-    }
-
-    public Long getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
     }
 
     @Override
